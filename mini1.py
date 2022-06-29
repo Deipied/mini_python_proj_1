@@ -4,10 +4,14 @@ import random
 print("Welcome to rock, paper, scissors!")
 
 rps = ["rock","paper","scissors"]
-outcomes = ["Rock beats scissors!", "Paper beats rock!", "Scissors beats        paper!", " You win!", "TIE", " You lose!"]
+outcomes = ["Rock beats scissors!", "Paper beats rock!", "Scissors beats paper!", " You win!", "TIE", " You lose!"]
 ans = ["yes","no"]
 
+player_score = 0
+bot_score = 0
+
 end_game = False
+
 
 while end_game != True:
     
@@ -26,20 +30,27 @@ while end_game != True:
     elif player_choice == rps[0]:
         if bot_choice == rps[1]:
             print(outcomes[1]+outcomes[5])
+            bot_score += 1
         else:
             print(outcomes[0]+outcomes[3])
+            player_score += 1
     elif player_choice == rps[1]:
         if bot_choice == rps[0]:
             print(outcomes[1]+outcomes[3])
+            player_score += 1
         else:
             print(outcomes[2]+outcomes[5])
+            bot_score += 1
     else:
         if bot_choice == rps[0]:
             print(outcomes[0]+outcomes[5])
+            bot_score += 1
         else:
             print(outcomes[2]+outcomes[3])
+            player_score += 1
     
-    end = input("Play Again? ").lower().strip()
+    print(f"Your score: {player_score} Bot score: {bot_score}")
+    end = input(f"Play Again? ").lower().strip()
     while end not in ans:
         print("Invalid answer, please type yes or no")
         end = input("Play Again? ").lower().strip()
